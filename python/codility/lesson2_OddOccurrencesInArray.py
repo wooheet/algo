@@ -11,4 +11,4 @@ def solve(A):
 
 
 A = [9, 3, 9, 3, 9, 7, 9]
-solve(A)
+print(solve(A))

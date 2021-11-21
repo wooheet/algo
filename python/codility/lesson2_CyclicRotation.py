@@ -16,9 +16,9 @@ def solution(A, K):
 
     return new_A
 
-A = [1,2,3,4,5,6,7,8]
+A = [1,2,3,4,5,6,7]
 K = -3
-solution(A, K)
+print(solution(A, K))
 
 
 # a = [1,2,3,4,5]
