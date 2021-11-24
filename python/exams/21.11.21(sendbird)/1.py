@@ -1,17 +1,12 @@
-
-# you can write to stdout for debugging purposes, e.g.
-# print("this is a debug message")
+# https://leetcode.com/problems/longest-happy-string/
 # https://github.com/knhngchn/leetcode-practice/blob/master/Python/longest-happy-string.py
 
 # A string is called happy if it does not have any of the strings 'aaa', 'bbb' or 'ccc' as a substring.
-#
 # Given three integers a, b and c, return any string s, which satisfies following conditions:
-#
 # s is happy and longest possible.
 # s contains at most a occurrences of the letter 'a', at most b occurrences of the letter 'b' and at most c occurrences of the letter 'c'.
 # s will only contain 'a', 'b' and 'c' letters.
 # If there is no such string s return the empty string "".
-#
 
 
 def valid(s, c):
@@ -36,6 +31,16 @@ def solution(A, B, C):
             return s
     return s
 
-    
+
 if __name__ == '__main__':
-    solution()
+    a, b, c = 1, 1, 7
+    print(solution(a, b, c))
+    # assert solution(a, b, c) == "ccaccbcc"
+
+    # a, b, c = 2, 2, 1
+    # print(solution(a, b, c))
+    # assert solution(a, b, c) == "aabbc"
+
+    # a, b, c = 7, 1, 0
+    # print(solution(a, b, c))
+    # assert solution(a, b, c) == "aabaa"
