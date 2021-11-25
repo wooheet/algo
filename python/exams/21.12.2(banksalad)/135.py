@@ -12,3 +12,71 @@
 #        /
 #      -1
 
+
+class Node:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+    # def __str__(self):
+    #     return f'<Node: value={self.value}, left={self.left}, right={self.right}>'
+
+
+def min_path_sum(root):
+    # 양의 무한
+    m = float('inf')
+    q = [(root, root.value)]
+
+    while q:
+        node, curr_sum = q.pop()
+
+        # 1. 종료 지점 찾기
+        if not node.left and not node.right:
+            if m > curr_sum:
+                m = curr_sum
+            continue
+
+        if node.left:
+            q.append((node.left, curr_sum + node.left.value))
+        if node.right:
+            q.append((node.right, curr_sum + node.right.value))
+
+    return m
+
+
+if __name__ == "__main__":
+    def test_p135_1():
+        node = Node(10)
+        print(node.__str__())
+        assert (min_path_sum(node) == 10)
+
+
+    def test_p135_2():
+        node = Node(10, left=Node(5), right=Node(5))
+        print(node.__str__())
+        assert (min_path_sum(node) == 15)
+
+
+    def test_p135_3():
+        node = Node(10, left=Node(5, None, Node(2)), right=Node(5))
+        print(node.__str__())
+        assert (min_path_sum(node) == 15)
+
+
+    def test_p135_4():
+        node = Node(10, left=Node(5, None, right=Node(2)), right=Node(5, None, right=Node(1)))
+        print(node.__str__())
+        assert (min_path_sum(node) == 16)
+
+
+    def test_p135_5():
+        node = Node(10, left=Node(5, None, right=Node(2)), right=Node(5, None, Node(1, left=Node(-1), right=None)))
+        print(node.__str__())
+        assert (min_path_sum(node) == 15)
+
+    # test_p135_1()
+    # test_p135_2()
+    # test_p135_3()
+    # test_p135_4()
+    test_p135_5()
