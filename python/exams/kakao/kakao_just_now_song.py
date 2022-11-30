@@ -22,11 +22,72 @@
 # 세 번째 예시에서 HELLO는 C#DEFGABC#DEFGAB로, WORLD는 ABCDE로 재생되었다. HELLO 안에 있는 ABC#은 기억한 멜로디인 ABC와 일치하지 않고, WORLD 안에 있는 ABC가 기억한 멜로디와 일치한다.
 
 
+from datetime import timedelta
+
+
 def solution(m, musicinfos):
     answer = ''
+    m = m.replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+
+    for music in musicinfos:
+        musicinfo = music.split(',')
+
+        if len(musicinfo) == 4:
+            start_time = musicinfo[0].split(':')
+            start_time_h, start_time_m = int(start_time[0]), int(start_time[1])
+
+            ent_time = musicinfo[1].split(':')
+            ent_time_h, ent_time_m = int(ent_time[0]), int(ent_time[1])
+
+            time = int((timedelta(hours=ent_time_h, seconds=ent_time_m) - timedelta(hours=start_time_h, seconds=start_time_m)).total_seconds())
+
+            em = musicinfo[3].replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a")
+
+            listen_time = len(em)
+
+            mok, namugi = divmod(time, listen_time)
+
+            result = ''
+
+            if mok != 0:
+                susfix = em[:namugi]
+                for i in range(mok-1):
+                    em += em
+                result = em + susfix
+
+            else:
+                result = em[:namugi]
+
+            if m in result:
+                answer = musicinfo[2]
     return answer
 
+def shap_to_lower(s):
+    s = s.replace('C#','c').replace('D#','d').replace('F#','f').replace('G#','g').replace('A#','a')
+    return s
 
-m = "ABCDEFG"
-musicinfos = ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]
+def solution2(m,musicinfos):
+    answer=[0,'(None)']   # time_len, title
+    m = shap_to_lower(m)
+    for info in musicinfos:
+        split_info = info.split(',')
+        time_length = (int(split_info[1][:2])-int(split_info[0][:2]))*60+int(split_info[1][-2:])-int(split_info[0][-2:])
+        title = split_info[2]
+        part_notes = shap_to_lower(split_info[-1])
+        full_notes = part_notes*(time_length//len(part_notes))+part_notes[:time_length%len(part_notes)]
+        if m in full_notes and time_length>answer[0]:
+            answer=[time_length,title]
+    return answer[-1]
+
+
+# m = "ABCDEFG"
+# musicinfos = ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]
+
+# m = "CC#BCC#BCC#BCC#B"
+# musicinfos = ["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]
+
+m = "ABC"
+# musicinfos = ["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]
+musicinfos = ["13:00,13:05,WORLD,ABCDEF", "12:00,12:14,HELLO,C#DEFGAB"]
+
 solution(m, musicinfos)
