@@ -17,11 +17,11 @@ def solution(m, n, board):
                     x_list.append([i, j])
                     point += 1
 
-        print(x_list)
-
         for i2 in x_list:
             i, j = i2[0], i2[1]
             x[i][j], x[i][j + 1], x[i + 1][j], x[i + 1][j + 1] = '팡!', '팡!', '팡!', '팡!'
+
+        print(x_list)
 
         for i3 in range(m):
             for i in range(m - 1):
