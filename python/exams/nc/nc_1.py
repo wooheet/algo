@@ -12,15 +12,15 @@
 #            cetuxe+e
 
 # cucumber     ""
-# "cu"         mber -> bcemru
+# "cu"         cumber -> bcemru
 # "u"          bcemru+c
 # ""           bcemruc+u -> bcemrucu
 
+
 # bbaabd       ""
-# bba          "abd"
-# bba-> abb    abd+a
-# bb           abda+b
-#              abdabb
+# bba          "abd"    'a', 'b', 'd'
+# b            "abdab"  'a', 'b'
+#              "abdab"  'b'
 
 # dup = [x for i, x in enumerate(l) if x in l[:i]]
 # dup_sort = sorted(dup)
@@ -28,25 +28,31 @@
 
 def solution(str):
 
-    l = list(str)
+    source = list(str)
+    dest = list()
+    find_dup(source, dest, len(dest))
+
+    return ''.join(dest)
+
+
+def find_dup(source, dest, n):
+    if len(source) == 0:
+        return
+
     dup = list()
-    not_dup = list()
 
-    for i, x in enumerate(l):
-        if x in l[:i]:
-            dup.append(x)
+    for i in range(len(source)):
+        if source[i] in source[:i]:
+            dup.append(source[i])
         else:
-            not_dup.append(x)
+            source.sort()
+            dest.append(source[i])
 
-    sorted_dict = sorted(dup)
-    sorted_list = sorted(not_dup)
-
-    joined_list = [*sorted_list, *sorted_dict]
-
-    return ''.join(joined_list)
+    find_dup(dup, dest, len(dest))
 
 # str = "execute"
-# str = "cucumber"
-str = "bbaabd"
+str = "cucumber"
+# str = "bbaabd"
+# str = "bbaaabbd"
 
 print(solution(str))
