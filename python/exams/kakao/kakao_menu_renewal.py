@@ -64,7 +64,9 @@ def solution(orders, course):
                         new_menu[res] = 2
                     else:
                         new_menu[res] += 1
+        print(candidates)
         sort_menu = sorted(new_menu.items(), key=lambda x:[len(x[0]), x[1]])
+
         if len(sort_menu):
             now = course[-1]
             maxi = sort_menu[-1][1]
@@ -82,11 +84,11 @@ def solution(orders, course):
 # ["ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"]	[2,3,5]	["ACD", "AD", "ADE", "CD", "XYZ"]
 # ["XYZ", "XWY", "WXA"]	[2,3,4]	["WX", "XY"]
 
-# orders = ["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"]
-# course = [2, 3, 4]
+orders = ["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"]
+course = [2, 3, 4]
 
-orders = ["ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"]
-course = [2,3,5]
+# orders = ["ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"]
+# course = [2,3,5]
 
 
 solution(orders, course)
