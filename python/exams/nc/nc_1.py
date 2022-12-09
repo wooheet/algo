@@ -27,7 +27,6 @@
 
 
 def solution(str):
-
     source = list(str)
     dest = list()
     find_dup(source, dest, len(dest))
