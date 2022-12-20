@@ -17,10 +17,7 @@
 # ""           bcemruc+u -> bcemrucu
 
 
-# bbaabd       ""
-# bba          "abd"    'a', 'b', 'd'
-# b            "abdab"  'a', 'b'
-#              "abdab"  'b'
+
 
 # dup = [x for i, x in enumerate(l) if x in l[:i]]
 # dup_sort = sorted(dup)
@@ -29,12 +26,17 @@
 def solution(str):
     source = list(str)
     dest = list()
-    find_dup(source, dest, len(dest))
+    find_dup(source, dest)
 
     return ''.join(dest)
 
+# bbaabd       ""
+# bba          "abd"    'a', 'b', 'd'
+# b            "abdab"  'a', 'b'
+#              "abdab"  'b'
 
-def find_dup(source, dest, n):
+
+def find_dup(source, dest):
     if len(source) == 0:
         return
 
@@ -47,11 +49,11 @@ def find_dup(source, dest, n):
             source.sort()
             dest.append(source[i])
 
-    find_dup(dup, dest, len(dest))
+    find_dup(dup, dest)
 
 # str = "execute"
-str = "cucumber"
-# str = "bbaabd"
+# str = "cucumber"
+str = "bbaabd"
 # str = "bbaaabbd"
 
 print(solution(str))

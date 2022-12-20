@@ -3,12 +3,15 @@ from itertools import combinations
 
 def icecreamParlor(m, arr):
 
+    result = list()
+
     for i in range(len(arr)):
         for j, x in enumerate(arr[i+1:]):
             sum = arr[i] + x
             if m == sum:
-                print(i+1, (i+1)+(j+1))
-                return
+                result.append(i+1)
+                result.append((i+1)+(j+1))
+                return result
 
     # for i in combinations(arr, 2):
     #     print(i)

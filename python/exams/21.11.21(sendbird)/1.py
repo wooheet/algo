@@ -16,6 +16,7 @@ def valid(s, c):
 def solution(A, B, C):
     s = ""
     x, y, z = [A, 'a'], [B, 'b'], [C, 'c']
+
     while x[0] or y[0] or z[0]:
         x, y, z = sorted([x, y, z], reverse=True)
         if x[0] and valid(s, x[1]):
