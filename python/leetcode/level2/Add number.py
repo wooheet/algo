@@ -87,30 +87,30 @@ s = Solution() #.addTwoNumbers(l1=lkl1.head, l2=lkl1.head)
 # s.addTwoNumbers(lkl1.head, lkl2.head)
 
 
-var addTwoNumbers = function(l1, l2) {
-    const result = [];
-    let carryNum = 0;
-
-    while(l1 !== null || l2 !== null) {
-        const sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carryNum;
-        result.push(sum%10);
-        carryNum = Math.floor(sum / 10) || 0;
-        l1 = l1?.next || null;
-        l2 = l2?.next || null;
-    }
-
-    if(carryNum > 0) result.push(carryNum);
-
-    return makeListNode(result);
-    };
-
-    function makeListNode(values) {
-    const link = new ListNode(values[0]);
-    if(values.length > 1) {
-    link.next = makeListNode(values.slice(1))
-    }
-
-    return link;
-}
+# var addTwoNumbers = function(l1, l2) {
+#     const result = [];
+#     let carryNum = 0;
+#
+#     while(l1 !== null || l2 !== null) {
+#         const sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carryNum;
+#         result.push(sum%10);
+#         carryNum = Math.floor(sum / 10) || 0;
+#         l1 = l1?.next || null;
+#         l2 = l2?.next || null;
+#     }
+#
+#     if(carryNum > 0) result.push(carryNum);
+#
+#     return makeListNode(result);
+# };
+#
+# function makeListNode(values) {
+#     const link = new ListNode(values[0]);
+#     if(values.length > 1) {
+#         link.next = makeListNode(values.slice(1))
+#     }
+#
+# return link;
+# }
 
 
