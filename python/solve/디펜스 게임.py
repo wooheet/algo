@@ -10,7 +10,7 @@ def solution(n, k, enemy):
     for idx in range(k, len(enemy)):
         print("push", enemy[idx])
         if enemy[idx] > q[0]:
-            print("pop",q[0])
+            print("pop", q[0])
         else:
             print("pop",enemy[idx])
 
