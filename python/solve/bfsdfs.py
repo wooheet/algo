@@ -58,9 +58,10 @@ for _ in range(m):
     graph[a][b] = graph[b][a] = 1
     # print(graph)
 
-print(graph)
-# print(visit_list)
+print(graph) # [[0, 0, 0, 0, 0], [0, 0, 1, 1, 1], [0, 1, 0, 0, 1], [0, 1, 0, 0, 1], [0, 1, 1, 1, 0]]
+print(visit_list) #[0, 0, 0, 0, 0]
 print(visit_list2)
+
 
 dfs(v)
 # print()
