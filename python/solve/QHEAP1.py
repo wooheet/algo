@@ -1,6 +1,5 @@
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-
 from heapq import heappush, heappop
+
 
 def qheapq(queries):
     q = []
