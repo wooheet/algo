@@ -1,16 +1,19 @@
 def solution(s):
-    answer = [s[0]]
+    answer = []
 
-    for i in range(1,len(s)):
-        # if not answer:
-        #     answer.append(i)
-        # else:
-        if answer[-1] == s[i]:
-            answer.pop()
+    for i in s:
+        if not answer:
+            answer.append(i)
         else:
-            answer.append(s[i])
+            if answer[-1] == i:
+                answer.pop()
+            else:
+                answer.append(i)
 
     if answer:
         return 0
     else:
         return 1
+
+s = "baabaa"
+solution(s)
