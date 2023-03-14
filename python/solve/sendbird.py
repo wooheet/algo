@@ -1,6 +1,6 @@
 # Example
-# blacklist = ['google.com', 'daum.com']
-# user_url = ['image.google.com', 'example.com']
+blacklist = ['google.com', 'daum.com']
+user_url = ['image.google.com', 'example.com']
 
 # blacklist = ['images.google.com']
 # user_url = ['books.google.com']

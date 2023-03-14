@@ -1,4 +1,3 @@
-#
 # def solution(n, arr1, arr2):
 #     arr1.sort(reverse=True)
 #     arr2.sort()
@@ -26,16 +25,91 @@
 # # solution(3,[1,2,3], [10,10,10])
 
 
+import re
+
+
+# def solution(s):
+#     n = []
+#     sc = ""
+#     ret = ""
+#     open = False
+#
+#     for i, x in enumerate(s):
+#
+#         numbers = re.findall("\d+", x)
+#         if numbers:
+#             n.append(x)
+#
+#         if len(n) > 0:
+#             if numbers:
+#                 n.append(x)
+#                 pass
+#
+#             if open and x != ']':
+#                 sc += x
+#
+#             if x == '[':
+#                 open = True
+#                 pass
+#
+#             if x == ']':
+#                 for r in range(int(n[-1])):
+#                     ret += sc
+#
+#                 n = []
+#                 open = False
+#                 sc = ""
+#         else:
+#
+#             ret += x
+#
+#     print(ret)
+
+
 def solution(s):
+    n = []
+    ret = ""
+    c = []
+    open = False
 
-    print(s)
+    for i, x in enumerate(s):
+        numbers = re.findall("\d+", x)
+        if numbers:
+            n.append(x)
+            pass
+
+        if open and not numbers and x != '[' and x != ']':
+            c.append(x)
+            pass
+
+        if x == '[':
+            open = True
+            pass
+
+        if x == ']':
+            open = False
+            temp = ""
+            for r in range(int(n[-1])):
+                if len(ret) > 0:
+                    ret
+                temp += c[-1]
+            c[-1] = temp
+            ret = "".join(c)
+            pass
 
 
 
-s = "3[a]2[bc]"
-"aaabcbc"
 
-# s = "3[a2[c]]"
+
+
+# def solve(n, sc, ret, open):
+
+
+
+# s = "3[a]2[bc]"
+# "aaabcbc"
+
+s = "3[a2[c]]"
 # "accaccacc"
 #
 # s = "2[abc]3[cd]ef"
